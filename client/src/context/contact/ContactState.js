@@ -42,7 +42,6 @@ const ContactState = props => {
   };
 
   const [state, dispatch] = useReducer(contactReducer, initialState);
-  // const [state, dispatch] = useReducer(GithubReducer, initialState);
 
   // add contact
   const addContact = contact => {
