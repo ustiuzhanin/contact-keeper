@@ -16,23 +16,14 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/contacts', require('./routes/contacts'));
 
 // server static accets in production
-// if (process.env.NODE_ENV === 'production') {
-//   // set static folder
-//   console.log('server running');
-//   app.use(express.static('/client/build'));
-//   console.log(path.resolve(__dirname, 'client', 'build', 'index.html'));
-//   app.get('*', (req, res) =>
-//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-//   );
-// }
 if (process.env.NODE_ENV === 'production') {
-  //set static folder
+  // set static folder
   console.log('server running');
-  app.use(express.static(path.join(__dirname, 'client', 'build')));
+  app.use(express.static('client/build'));
 
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-  });
+  app.get('/*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  );
 }
 
 const PORT = process.env.port || 5000;
