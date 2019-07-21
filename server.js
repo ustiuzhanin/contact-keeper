@@ -18,7 +18,6 @@ app.use('/api/contacts', require('./routes/contacts'));
 // server static accets in production
 if (process.env.NODE_ENV === 'production') {
   // set static folder
-  console.log('server running');
   app.use(express.static('client/build'));
 
   app.get('*', (req, res) =>
